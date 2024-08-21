@@ -3,7 +3,6 @@ import { setPositionItems } from "./helpers/setPositionItems.js";
 import { shuffleArray } from "./helpers/shuffleArray.js";
 import { buttonsEvents } from "./events/buttonsEvents..js";
 import { clickEvents } from "./events/clickEvents.js";
-import { shuffleEvent } from "./events/shuffleEvent.js";
 
 
 
@@ -24,7 +23,11 @@ setPositionItems(matrix);
 /** --------------------------------------------EVENTS----------------------------------- */
 
 /** Shuffle */
-document.getElementById("shuffle").addEventListener("click", () => shuffleEvent(matrix));
+document.getElementById("shuffle").addEventListener("click", () => {
+    const shuffledArray = shuffleArray(matrix.flat());
+    matrix = getMatrix(shuffledArray);
+    setPositionItems(matrix);
+});
 
 /** Change position by click*/
 export const blankNumber = 16;
